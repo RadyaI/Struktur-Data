@@ -19,10 +19,18 @@ class Passenger<T> {
         this.ticketClass = ticketClass;
     }
 
-    public String getName() { return name; }
-    public T getIdentityNumber() { return identityNumber; }
-    public String getBookingCode() { return bookingCode; }
-    public TicketClass getTicketClass() { return ticketClass; }
+    public String getName() {
+        return name;
+    }
+    public T getIdentityNumber() {
+        return identityNumber;
+    }
+    public String getBookingCode() {
+        return bookingCode;
+    }
+    public TicketClass getTicketClass() {
+        return ticketClass;
+    }
 }
 
 public class task {
