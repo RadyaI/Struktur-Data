@@ -13,8 +13,8 @@ public class Main {
         manager.addFirst(new Schedule("TRN001", "Argo Parahyangan", "Jakarta", "Bandung", "06:00", 150000));
         manager.displayAll();
 
-        System.out.println("\n2. Mencari Rute dari atau ke 'Surabaya'");
-        List<Schedule> searchResults = manager.searchRoutes("Surabaya");
+        System.out.println("\n2. Mencari Rute   ");
+        List<Schedule> searchResults = manager.searchRoutes("Bandung");
         for (Schedule s : searchResults) {
             s.displayInfo();
         }
@@ -34,7 +34,8 @@ public class Main {
 
         System.out.println("\n6. Cleanup Jadwal: Menghapus TRN004 menggunakan Iterator");
         boolean isCleaned = manager.cleanupSchedule("TRN004");
-        if (isCleaned) {
+        boolean isCleaned2 = manager.cleanupSchedule("TRN005");
+        if (isCleaned && isCleaned2) {
             System.out.println("Jadwal TRN004 berhasil dihapus.");
         } else {
             System.out.println("Jadwal TRN004 tidak ditemukan.");

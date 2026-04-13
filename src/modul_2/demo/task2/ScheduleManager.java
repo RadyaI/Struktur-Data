@@ -50,13 +50,13 @@ public class ScheduleManager {
             return;
         }
 
-        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.println();
         Iterator<Schedule> iterator = schedules.iterator();
         while (iterator.hasNext()) {
             Schedule s = iterator.next();
             s.displayInfo();
         }
-        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.println();
     }
 
     public boolean cleanupSchedule(String trainCodeToRemove) {

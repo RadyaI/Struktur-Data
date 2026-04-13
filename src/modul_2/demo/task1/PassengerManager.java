@@ -64,10 +64,10 @@ public class PassengerManager {
             System.out.println("Data penumpang masih kosong.");
             return;
         }
-        System.out.println("=========================================================================================");
+        System.out.println();
         for (Passenger p : passengers) {
             p.displayInfo();
         }
-        System.out.println("=========================================================================================");
+        System.out.println();
     }
 }
