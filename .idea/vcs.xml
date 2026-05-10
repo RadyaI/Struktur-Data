@@ -3,6 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/modul_2/codelab" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/modul_4/DATA-STRUCTURE" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/src/modul_4/DATA_STRUCTURE" vcs="Git" />
   </component>
 </project>
