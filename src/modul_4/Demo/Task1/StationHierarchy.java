@@ -4,18 +4,10 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 
-/**
- * Manages the General Tree structure of railway station hierarchy.
- */
 public class StationHierarchy {
 
     private StationNode root;
 
-    // ─── Set Root ──────────────────────────────────────────────────────────────
-
-    /**
-     * Define the main/central station of the network.
-     */
     public void setRoot(StationNode station) {
         this.root = station;
         System.out.println("[Info] Root station set: " + station.getStationCode()
@@ -26,12 +18,6 @@ public class StationHierarchy {
         return root;
     }
 
-    // ─── Add Station ───────────────────────────────────────────────────────────
-
-    /**
-     * Add a new station under a specific parent, identified by parentCode.
-     * Returns true if the parent was found and the child added successfully.
-     */
     public boolean addStation(String parentCode, StationNode newStation) {
         if (root == null) {
             System.out.println("[Error] Tree is empty. Set a root station first.");
@@ -50,18 +36,10 @@ public class StationHierarchy {
         return true;
     }
 
-    // ─── Find Station ──────────────────────────────────────────────────────────
-
-    /**
-     * Public wrapper to search a station by its station code.
-     */
     public StationNode findStation(String code) {
         return findStationRecursive(root, code);
     }
 
-    /**
-     * Recursive DFS search — looks through subtree rooted at 'current'.
-     */
     private StationNode findStationRecursive(StationNode current, String code) {
         if (current == null) return null;
         if (current.getStationCode().equals(code)) return current;
@@ -73,25 +51,12 @@ public class StationHierarchy {
         return null;
     }
 
-    // ─── Remove Station ────────────────────────────────────────────────────────
-
-    /**
-     * Remove a station by its code.
-     *
-     * Strategy for children:
-     *   - If the removed station has children, they are REASSIGNED to the grandparent
-     *     (the removed station's parent). This avoids data loss.
-     *   - If the removed station IS the root, the tree is cleared entirely.
-     *
-     * Returns true if the station was found and removed.
-     */
     public boolean removeStation(String code) {
         if (root == null) {
             System.out.println("[Error] Tree is empty.");
             return false;
         }
 
-        // Special case: removing root
         if (root.getStationCode().equals(code)) {
             System.out.println("[Warning] Removing root clears the entire tree.");
             root = null;
@@ -106,13 +71,11 @@ public class StationHierarchy {
 
         StationNode parent = target.getParent();
 
-        // Reassign target's children to grandparent
         for (StationNode child : target.getChildren()) {
             child.setParent(parent);
             parent.getChildren().add(child);
         }
 
-        // Remove target from parent's children list
         parent.removeChild(target);
 
         System.out.println("[Info] Station [" + code + "] removed. "
@@ -121,11 +84,6 @@ public class StationHierarchy {
         return true;
     }
 
-    // ─── Traversals ────────────────────────────────────────────────────────────
-
-    /**
-     * Pre-Order: Root → Children (depth-first, useful for copying structure).
-     */
     public void preOrderTraversal() {
         System.out.println("\n=== Pre-Order Traversal (Root → Children) ===");
         preOrderRecursive(root, 0);
@@ -144,9 +102,6 @@ public class StationHierarchy {
         }
     }
 
-    /**
-     * Post-Order: Children → Root (depth-first, useful for deletion logic).
-     */
     public void postOrderTraversal() {
         System.out.println("\n=== Post-Order Traversal (Children → Root) ===");
         postOrderRecursive(root, 0);
@@ -165,9 +120,6 @@ public class StationHierarchy {
                 + " (" + node.getRegion() + ")");
     }
 
-    /**
-     * Level-Order (BFS): Traverse level by level.
-     */
     public void levelOrderTraversal() {
         System.out.println("\n=== Level-Order Traversal (BFS) ===");
         if (root == null) {
@@ -199,11 +151,6 @@ public class StationHierarchy {
         }
     }
 
-    // ─── Tree Statistics ───────────────────────────────────────────────────────
-
-    /**
-     * Returns the total number of stations in the tree.
-     */
     public int getTotalStations() {
         return countNodes(root);
     }
@@ -217,18 +164,13 @@ public class StationHierarchy {
         return count;
     }
 
-    /**
-     * Returns the height of the tree.
-     * Height = number of edges on the longest root-to-leaf path.
-     * A single node (root only) has height 0.
-     */
     public int getTreeHeight() {
         return calculateHeight(root);
     }
 
     private int calculateHeight(StationNode node) {
-        if (node == null) return -1;       // empty tree
-        if (node.isLeaf()) return 0;       // leaf node
+        if (node == null) return -1;
+        if (node.isLeaf()) return 0;
 
         int maxChildHeight = -1;
         for (StationNode child : node.getChildren()) {
@@ -240,9 +182,6 @@ public class StationHierarchy {
         return maxChildHeight + 1;
     }
 
-    /**
-     * Print a summary of tree statistics.
-     */
     public void printStats() {
         System.out.println("\n=== Tree Statistics ===");
         if (root == null) {
@@ -254,19 +193,6 @@ public class StationHierarchy {
         System.out.println("Tree Height   : " + getTreeHeight());
     }
 
-    // ─── Visual Tree Print ─────────────────────────────────────────────────────
-
-    /**
-     * Print the tree in a visual diagram style, e.g.:
-     *
-     *  [GMRI] Gambir
-     *  ├── [JKTK] Jakarta Kota
-     *  │   ├── [BKSI] Bekasi
-     *  │   └── [MDND] Mangga Dua
-     *  ├── [JKTB] Jakarta Barat
-     *  └── [PSRN] Pasar Senen
-     *      └── [TNJP] Tanjung Priok
-     */
     public void printTree() {
         System.out.println("\n=== Tree Visualization ===");
         if (root == null) {
@@ -288,12 +214,9 @@ public class StationHierarchy {
         }
     }
 
-    // ─── Main (Demo) ───────────────────────────────────────────────────────────
-
     public static void main(String[] args) {
         StationHierarchy hierarchy = new StationHierarchy();
 
-        // ── Build the tree ──────────────────────────────────────────────────────
         //
         //              GMRI (Gambir)
         //             /      |      \
@@ -301,7 +224,6 @@ public class StationHierarchy {
         //          /  \              \
         //        BKSI MDND          TNJP
         //
-        // ───────────────────────────────────────────────────────────────────────
 
         StationNode gambir   = new StationNode("GMRI", "Gambir",          "Jakarta Pusat");
         StationNode jakartaK = new StationNode("JKTK", "Jakarta Kota",    "Jakarta Utara");
@@ -311,31 +233,24 @@ public class StationHierarchy {
         StationNode mangga   = new StationNode("MDND", "Mangga Dua",      "Jakarta Utara");
         StationNode tanjung  = new StationNode("TNJP", "Tanjung Priok",   "Jakarta Utara");
 
-        // Set root
         hierarchy.setRoot(gambir);
 
-        // Add children to root
         hierarchy.addStation("GMRI", jakartaK);
         hierarchy.addStation("GMRI", jakartaB);
         hierarchy.addStation("GMRI", pasar);
 
-        // Add grandchildren
         hierarchy.addStation("JKTK", bekasi);
         hierarchy.addStation("JKTK", mangga);
         hierarchy.addStation("PSRN", tanjung);
 
-        // ── Visual Tree ─────────────────────────────────────────────────────────
         hierarchy.printTree();
 
-        // ── Traversals ──────────────────────────────────────────────────────────
         hierarchy.preOrderTraversal();
         hierarchy.postOrderTraversal();
         hierarchy.levelOrderTraversal();
 
-        // ── Stats ───────────────────────────────────────────────────────────────
         hierarchy.printStats();
 
-        // ── Find ────────────────────────────────────────────────────────────────
         System.out.println("\n=== Find Station ===");
         StationNode found = hierarchy.findStation("JKTK");
         System.out.println(found != null ? "Found: " + found : "Not found.");
@@ -343,7 +258,6 @@ public class StationHierarchy {
         StationNode notFound = hierarchy.findStation("XYZ");
         System.out.println(notFound != null ? "Found: " + notFound : "Not found: XYZ");
 
-        // ── Remove ──────────────────────────────────────────────────────────────
         System.out.println("\n=== Remove Station [JKTK] ===");
         hierarchy.removeStation("JKTK");
 

@@ -3,9 +3,6 @@ package modul_4.Demo.Task1;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents a single station node in the general tree hierarchy.
- */
 public class StationNode {
 
     private String stationCode;
@@ -13,8 +10,6 @@ public class StationNode {
     private String region;
     private List<StationNode> children;
     private StationNode parent;
-
-    // ─── Constructor ───────────────────────────────────────────────────────────
 
     public StationNode(String stationCode, String stationName, String region) {
         this.stationCode = stationCode;
@@ -24,11 +19,6 @@ public class StationNode {
         this.parent      = null;
     }
 
-    // ─── Core Methods ──────────────────────────────────────────────────────────
-
-    /**
-     * Add a sub-station (child) under this station.
-     */
     public void addChild(StationNode child) {
         if (child == null) {
             System.out.println("[Warning] Cannot add null child to " + stationCode);
@@ -38,10 +28,6 @@ public class StationNode {
         this.children.add(child);
     }
 
-    /**
-     * Remove a direct sub-station from this station.
-     * Returns true if the child was found and removed, false otherwise.
-     */
     public boolean removeChild(StationNode child) {
         if (child == null) return false;
         boolean removed = this.children.remove(child);
@@ -51,14 +37,9 @@ public class StationNode {
         return removed;
     }
 
-    /**
-     * Returns true if this station has no sub-stations.
-     */
     public boolean isLeaf() {
         return this.children.isEmpty();
     }
-
-    // ─── Getters & Setters ─────────────────────────────────────────────────────
 
     public String getStationCode() { return stationCode; }
     public String getStationName() { return stationName; }
@@ -70,8 +51,6 @@ public class StationNode {
     public void setStationName(String stationName) { this.stationName = stationName; }
     public void setRegion(String region)           { this.region = region; }
     public void setParent(StationNode parent)      { this.parent = parent; }
-
-    // ─── toString ──────────────────────────────────────────────────────────────
 
     @Override
     public String toString() {
