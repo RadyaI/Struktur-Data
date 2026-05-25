@@ -16,7 +16,7 @@ public class Main {
             tampilkanMenu();
             System.out.print("Pilih menu: ");
             pilihan = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
 
             switch (pilihan) {
                 case 1 -> tambahItem();
@@ -32,7 +32,6 @@ public class Main {
         } while (pilihan != 0);
     }
 
-    // ===================== MENU =====================
     static void tampilkanMenu() {
         System.out.println("\n========================================");
         System.out.println("   Railway Inventory Management System  ");
@@ -47,7 +46,6 @@ public class Main {
         System.out.println("========================================");
     }
 
-    // ===================== FEATURE 1: Tambah Item =====================
     static void tambahItem() {
         System.out.print("Nama item: ");
         String nama = scanner.nextLine();
@@ -68,7 +66,6 @@ public class Main {
         System.out.println("Item \"" + nama + "\" berhasil ditambahkan!");
     }
 
-    // ===================== FEATURE 2: Lihat Inventory =====================
     static void lihatInventory() {
         if (inventory.isEmpty()) {
             System.out.println("Inventori masih kosong.");
@@ -83,7 +80,6 @@ public class Main {
         }
     }
 
-    // ===================== FEATURE 3: Cari Item =====================
     static void cariItem() {
         System.out.print("Nama item yang dicari: ");
         String nama = scanner.nextLine();
@@ -97,7 +93,6 @@ public class Main {
         }
     }
 
-    // ===================== FEATURE 4: Tambah Stok =====================
     static void tambahStok() {
         System.out.print("Nama item yang ingin ditambah stoknya: ");
         String nama = scanner.nextLine();
@@ -118,7 +113,6 @@ public class Main {
         System.out.println("Stok \"" + nama + "\" berhasil diperbarui menjadi " + stokBaru + ".");
     }
 
-    // ===================== FEATURE 5: Hapus Item =====================
     static void hapusItem() {
         System.out.print("Nama item yang ingin dihapus: ");
         String nama = scanner.nextLine();
@@ -132,7 +126,6 @@ public class Main {
         System.out.println("Item \"" + nama + "\" berhasil dihapus dari inventori.");
     }
 
-    // ===================== FEATURE 6: Update Harga =====================
     static void updateHarga() {
         System.out.print("Nama item yang ingin diupdate harganya: ");
         String nama = scanner.nextLine();

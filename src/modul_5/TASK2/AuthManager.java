@@ -10,6 +10,14 @@ public class AuthManager {
     private HashMap<String, ArrayList<String>> userDetails = new HashMap<>();
     private String loggedInUser = null;
 
+//    public AuthManager(){
+//        users.put("radya@gmail.com", "12345678");
+//        ArrayList<String> defaultData = new ArrayList<>();
+//        defaultData.add("Muhammad Radya Iftikhar");
+//        defaultData.add("Malang, Sawojajar");
+//        userDetails.put("radyaiftikhar@gmail.com", defaultData);
+//    }
+
     public boolean isLoggedIn() {
         return loggedInUser != null;
     }

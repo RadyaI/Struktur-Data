@@ -9,11 +9,19 @@ public class InventoryItem {
         this.price = price;
     }
 
-    public int getStock() { return stock; }
-    public double getPrice() { return price; }
+    public int getStock() {
+        return stock;
+    }
+    public double getPrice() {
+        return price;
+    }
 
-    public void setStock(int stock) { this.stock = stock; }
-    public void setPrice(double price) { this.price = price; }
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     @Override
     public String toString() {

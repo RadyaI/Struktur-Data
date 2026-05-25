@@ -16,7 +16,7 @@ public class Main {
                 System.out.println("==============================");
                 System.out.println("1. Register");
                 System.out.println("2. Login");
-                System.out.println("3. Exit");
+                System.out.println("99. Exit");
                 System.out.print("Choose menu: ");
                 choice = sc.nextInt();
                 sc.nextLine();
@@ -24,7 +24,7 @@ public class Main {
                 switch (choice) {
                     case 1 -> auth.register(sc);
                     case 2 -> auth.login(sc);
-                    case 3 -> System.out.println("Goodbye!");
+                    case 99 -> System.out.println("Goodbye!");
                     default -> System.out.println("Invalid choice!");
                 }
 
@@ -60,12 +60,12 @@ public class Main {
                     }
                     case 9 -> {
                         System.out.println("Goodbye!");
-                        choice = 3;
+                        choice = 99;
                     }
                     default -> System.out.println("Invalid choice!");
                 }
             }
 
-        } while (choice != 3);
+        } while (choice != 99);
     }
 }
