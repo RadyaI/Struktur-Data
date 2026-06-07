@@ -75,9 +75,6 @@ public class Main {
         // DFS Traversal (Rekursif) dari Jakarta
         traversal.dfsTraversal("JKT");
 
-        // DFS Iteratif (pakai Stack eksplisit)
-        traversal.dfsIterative("JKT");
-
         // BFS Pathfinding: cari jalur dengan stop minimum
         traversal.findPathBFS("JKT", "SBY");   // Jakarta -> Surabaya
         traversal.findPathBFS("JKT", "MLG");   // Jakarta -> Malang
